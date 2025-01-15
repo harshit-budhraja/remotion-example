@@ -3,6 +3,14 @@ import { Composition } from "remotion";
 import { MyComposition } from "./Composition";
 
 export const RemotionRoot: React.FC = () => {
+  // Get query parameters from URL
+  const searchParams = new URLSearchParams(window.location.search);
+  let email = searchParams.get('email');
+
+  if (email === "" || email === null) {
+    email = "dimahbi494@disipulo.com";
+  }
+
   return (
     <Composition
       id="MyComp"
@@ -12,7 +20,7 @@ export const RemotionRoot: React.FC = () => {
       width={1920}
       height={1080}
       defaultProps={{
-        email: "dimahbi494@disipulo.com"
+        email
       }}
     />
   );
